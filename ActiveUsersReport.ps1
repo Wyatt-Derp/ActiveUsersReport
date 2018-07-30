@@ -33,12 +33,13 @@ $activeUsersdelimiter = New-Object -TypeName psobject -Property @{
 }
 
 #Add objects to $allusers array for a break
+$reportBreak = @()
 $reportBreak += $breakDelimiter
 $reportBreak += $activeUsersdelimiter
 $reportBreak += $breakDelimiter
 
 #Combine both user reports, create filename and export to csv
 $userReport = $AllUsers + $reportBreak + $ActiveUsers
-$filepath = "c:\temp\UserReport_" + (get-date).ToString("MM-dd-yyyy") + ".csv"
 $userReport
+#$filepath = "c:\temp\UserReport_" + (get-date).ToString("MM-dd-yyyy") + ".csv"
 #$userReport | Export-Csv -NoTypeInformation -Path $filepath
