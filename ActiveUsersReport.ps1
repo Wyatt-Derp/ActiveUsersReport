@@ -1,6 +1,6 @@
 Import-Module ActiveDirectory
 #List of keywords in Name of each user to exclude
-$blacklist = "svc|Mailbox|srvc|admin|billing|support|lab|ctac|scan|sharepoint|windows|window|n-able|nable|cluster|test|local|ACE|AAD|ncentral|MSOL|Open DNS|opendns|OneLogin|Airwatch|Temp|service|mastercontrol|copier|scan|fax|room|calendar|conference|accounting|training|conf|central|concierge|nurse|staff"
+$blacklist = "svc|Mailbox|srvc|admin|billing|support|lab|ctac|scan|sharepoint|windows|window|n-able|nable|cluster|test|local|ACE|AAD|ncentral|MSOL|Open DNS|opendns|OneLogin|Airwatch|Temp|service|mastercontrol|copier|scan|fax|room|calendar|conference|accounting|training|conf|central|concierge|nurse|staff|backups|psa|sso|noc|ctac|centrex|connectivity"
 
 #Find all users that are enabled and logged in within the past 90 days.
 $AllUsers = Get-ADUser -filter * -Properties name,lastlogondate,enabled | Where-Object {$_.lastlogondate -gt (get-date).adddays(-90) -and $_.Enabled -eq $true} | Select-Object Name,lastlogondate
